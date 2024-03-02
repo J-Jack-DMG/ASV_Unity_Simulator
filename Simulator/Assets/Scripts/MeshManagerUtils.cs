@@ -121,7 +121,7 @@ namespace MeshManager
             int tmp_max_x = 1;
             int tmp_min_x = 1;
 
-            if (nearUnderWaterVertices.Count > 1){
+            if (nearUnderWaterVertices.Count > 4){
                 for (int i = 1; i < nearUnderWaterVertices.Count; i++){
                     // search for the max z points
                     if (nearUnderWaterVertices[i].z > nearUnderWaterVertices[tmp_max_z].z){
@@ -151,7 +151,7 @@ namespace MeshManager
                 return tmp_waterCenter;
             }
             else{
-                return boatRB.centerOfMass;
+                return boatTrans.TransformPoint(boatRB.centerOfMass);
             }    
         }
 

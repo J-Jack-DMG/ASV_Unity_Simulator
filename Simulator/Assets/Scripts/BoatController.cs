@@ -35,16 +35,16 @@ public class BoatController : MonoBehaviour
     // [Header("Action Debug - Set value for both engines [0,1]")]
     // public float leftEngineAction;
     // public float rightEngineAction;
-    // [Header("Speed Debug - Current Boat speed")]
+    [Header("Speed Debug - Current Boat speed")]
     // public float SpeedModule;
     // public Vector3 SpeedDirection;
-    // public float VelX;
-    // public float VelZ;
-    // public float VelY;
-    // [Header("Angular Velocity")]
-    // public float angVelY;
-    // public float angVelX;
-    // public float angVelZ;    
+    public float VelX;
+    public float VelZ;
+    public float VelY;
+    [Header("Angular Velocity")]
+    public float angVelY;
+    public float angVelX;
+    public float angVelZ;    
 
     // [Header("Linear Acceleration")]
     // private Vector3 lastVelocity = new Vector3(0f, 0f, 0f);
@@ -153,12 +153,12 @@ public class BoatController : MonoBehaviour
         // Debug Values - Printed on the Unity Inspector
         // SpeedModule = boatRB.velocity.magnitude;
         // SpeedDirection = boatRB.velocity.normalized;
-        // VelX = boatRB.velocity.x;
-        // VelY = boatRB.velocity.y;
-        // VelZ = boatRB.velocity.z;
-        // angVelX = boatRB.angularVelocity.x;
-        // angVelY = boatRB.angularVelocity.y;
-        // angVelZ = boatRB.angularVelocity.z;
+        VelX = boatRB.velocity.x;
+        VelY = boatRB.velocity.y;
+        VelZ = boatRB.velocity.z;
+        angVelX = boatRB.angularVelocity.x;
+        angVelY = boatRB.angularVelocity.y;
+        angVelZ = boatRB.angularVelocity.z;
         // Vector3 now_vel = boatRB.velocity;
 		// acceleration = (now_vel - lastVelocity) / Time.fixedDeltaTime;
         // lastVelocity = boatRB.velocity;

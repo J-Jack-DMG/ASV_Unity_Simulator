@@ -5,7 +5,8 @@ using System.Collections.Generic;
 //Equations that calculates boat physics forces
 public static class PhysicsManagerUtils
 {
-    public const float RHO_WATER = 1000f;
+    // public const float RHO_WATER = 1000f;
+    public const float RHO_WATER = 1027f; // ocean water
 
 
     public static Vector3 DirectBuoyancyForce(float rho, float underWaterVolume){

@@ -24,6 +24,7 @@ public class PhysicsManagerObject : MonoBehaviour
     private float rhoWater = PhysicsManagerUtils.RHO_WATER;
     public Vector3 CoB;
     private BuoyancyData b_struct;
+    private Vector3 auxUnderWaterCenter;
 
     void Awake()
     {
@@ -47,23 +48,26 @@ public class PhysicsManagerObject : MonoBehaviour
         //Meshes that are below and above the water
         underWaterMesh = underWaterObj.GetComponent<MeshFilter>().mesh;
 
-    }
-
-    void Update()
-    {
-        //Generate the under water and above water meshes
-
-        meshManagerUtils.GenerateUnderwaterMesh();
-
-        // Display the under water mesh - is always needed to get the underwater length for forces calculations
-        meshManagerUtils.DisplayMesh(underWaterMesh, "UnderWater Mesh", meshManagerUtils.underWaterTriangleData);
+        auxUnderWaterCenter = Vector3.zero;
 
     }
+
+    // void Update()
+    // {
+    //     //Generate the under water and above water meshes
+
+    //     meshManagerUtils.GenerateUnderwaterMesh();
+
+    //     // Display the under water mesh - is always needed to get the underwater length for forces calculations
+    //     meshManagerUtils.DisplayMesh(underWaterMesh, "UnderWater Mesh", meshManagerUtils.underWaterTriangleData);
+
+    // }
 
     void FixedUpdate()
 	{
         // test from update to fixedupdate
         meshManagerUtils.GenerateUnderwaterMesh();
+        meshManagerUtils.DisplayMesh(underWaterMesh, "UnderWater Mesh", meshManagerUtils.underWaterTriangleData);
 
         //Add forces to the part of the boat that's below the water
 
@@ -90,6 +94,10 @@ public class PhysicsManagerObject : MonoBehaviour
 
         Gizmos.color = Color.black;
         Gizmos.DrawLine(transform.TransformPoint(new Vector3(0f, 0f, 0f)), transform.TransformPoint(new Vector3(0f, 0f, 0f))+boatRB.velocity.normalized*2);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawSphere(auxUnderWaterCenter, 0.05f);
+
         // Draw a yellow sphere at the transform's position
         // Gizmos.color = Color.yellow;
         // Gizmos.DrawSphere(new Vector3(0f, -0.31f, 0.1f), 1f);
@@ -104,7 +112,7 @@ public class PhysicsManagerObject : MonoBehaviour
 
         //Calculate the forces
         Vector3 forceToAdd = Vector3.zero;
-        Vector3 auxUnderWaterCenter = Vector3.zero;
+        auxUnderWaterCenter = Vector3.zero;
         // BuoyancyData b_struct;
 
         auxUnderWaterCenter = meshManagerUtils.CreateAuxUnderWaterCenter();
@@ -124,6 +132,44 @@ public class PhysicsManagerObject : MonoBehaviour
 
 
     }
+    //
+    // Section for under water objstacals 
+    //
+    // void OnTriggerEnter(Collider collision)
+    // {
+    //     // Debug.Log("detect collision");
+    //     // Debug.Log("Obstacle detected" + collision.gameObject + " at " + collision.ClosestPoint() + " [m] ");
+    //     Debug.Log("Obstacle detected" + collision.gameObject.tag);
 
+    //     foreach (ContactPoint contact in collision.contacts)
+    //     {
+    //         print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+    //         // Visualize the contact point
+    //         Debug.DrawRay(contact.point, contact.normal, Color.white);
+    //     }
+    // }
+    // void OnCollisionEnter(Collision collision)
+    // {
+
+    //     // foreach (ContactPoint contact in collision.contacts)
+    //     // {
+    //     //     print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+    //     //     // Visualize the contact point
+    //     //     Debug.DrawRay(contact.point, contact.normal, Color.white);
+    //     // }
+
+    //     if(collision.gameObject.tag == "Lidar_C"){
+	// 		Debug.Log(" [C] Lider detects obstacle");
+	// 	}
+
+	// 	if(collision.gameObject.tag == "Lidar_L"){
+	// 		Debug.Log(" [L] Lider detects obstacle");
+	// 	}
+
+	// 	if(collision.gameObject.tag == "Lidar_R"){
+	// 		Debug.Log(" [R] Lider detects obstacle");
+	// 	}
+    // }
 }
+
 

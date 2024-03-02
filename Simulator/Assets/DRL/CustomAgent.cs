@@ -120,7 +120,7 @@ public class CustomAgent : Agent {
 
 		Vector3 tmp_norm_vel = AgentRB.velocity.normalized;
 		Vector3 tmp_norm_dir = (target.position - AgentRB.position).normalized; 
-		angle_O = Vector3.Angle(tmp_norm_dir, tmp_norm_vel);
+		angle_O = Vector3.SignedAngle(tmp_norm_dir, tmp_norm_vel,  transform.up);
 		angle_O_norm = angle_O / 180f;
 		sensor.AddObservation( angle_O_norm );
 
@@ -131,24 +131,24 @@ public class CustomAgent : Agent {
 
 
 		// _________________Acceleration________________//
-		const float maxModVel = 5.6f;
-		const float maxModAcc = 6f;
-		Vector3 now_vel = GetComponent<Rigidbody>().velocity;
-		Vector3 acceleration = (now_vel - lastVelocity) / Time.fixedDeltaTime;
-		lastVelocity = now_vel;
-		float acc_x = ((Mathf.Clamp(acceleration.x, -maxModAcc, maxModAcc)) + maxModAcc) / (2 * maxModAcc);
-		float acc_y = ((Mathf.Clamp(acceleration.y, -maxModAcc, maxModAcc)) + maxModAcc) / (2 * maxModAcc);
-		float acc_z = ((Mathf.Clamp(acceleration.z, -maxModAcc, maxModAcc)) + maxModAcc) / (2 * maxModAcc);
-		sensor.AddObservation( acc_x );
-		sensor.AddObservation( acc_y );
-		sensor.AddObservation( acc_z );
+		// const float maxModVel = 5.6f;
+		// const float maxModAcc = 6f;
+		// Vector3 now_vel = GetComponent<Rigidbody>().velocity;
+		// Vector3 acceleration = (now_vel - lastVelocity) / Time.fixedDeltaTime;
+		// lastVelocity = now_vel;
+		// float acc_x = ((Mathf.Clamp(acceleration.x, -maxModAcc, maxModAcc)) + maxModAcc) / (2 * maxModAcc);
+		// float acc_y = ((Mathf.Clamp(acceleration.y, -maxModAcc, maxModAcc)) + maxModAcc) / (2 * maxModAcc);
+		// float acc_z = ((Mathf.Clamp(acceleration.z, -maxModAcc, maxModAcc)) + maxModAcc) / (2 * maxModAcc);
+		// sensor.AddObservation( acc_x );
+		// sensor.AddObservation( acc_y );
+		// sensor.AddObservation( acc_z );
 
 
 		// The max velocity is explained inside a comment in issue #1 task #11
 		// With the current setting The module of the maxspeed is 5.5 [m/s]
 		// This means that the maximum speed that both the x-axis and z-axis can experience 
 		// falls within the range -5.5 and 5.5
-		// const float maxModVel = 2f;
+		const float maxModVel = 2f;
 		float linVelX = Mathf.Clamp(GetComponent<Rigidbody>().velocity.x, -maxModVel, maxModVel);
 		// float linVelY = Mathf.Clamp(GetComponent<Rigidbody>().velocity.y, -maxModVel, maxModVel);
 		float linVelZ = Mathf.Clamp(GetComponent<Rigidbody>().velocity.z, -maxModVel, maxModVel);
@@ -173,13 +173,13 @@ public class CustomAgent : Agent {
 
 
 		// Addding additional information for the boat:
-		const float maxRotation = 360f;
-		float tiltX = ((AgentRB.rotation.x + 360) % maxRotation) / maxRotation; // this handle the range [-180°, inf]
-		float tiltY = ((AgentRB.rotation.y + 360) % maxRotation) / maxRotation; // this handle the range [-180°, inf]
-		float tiltZ = ((AgentRB.rotation.z + 360) % maxRotation) / maxRotation; // this handle the range [-180°, inf]
-		sensor.AddObservation( tiltX );
-		sensor.AddObservation( tiltY );
-		sensor.AddObservation( tiltZ );
+		// const float maxRotation = 360f;
+		// float tiltX = ((AgentRB.rotation.x + 360) % maxRotation) / maxRotation; // this handle the range [-180°, inf]
+		// float tiltY = ((AgentRB.rotation.y + 360) % maxRotation) / maxRotation; // this handle the range [-180°, inf]
+		// float tiltZ = ((AgentRB.rotation.z + 360) % maxRotation) / maxRotation; // this handle the range [-180°, inf]
+		// sensor.AddObservation( tiltX );
+		// sensor.AddObservation( tiltY );
+		// sensor.AddObservation( tiltZ );
 
 
 
@@ -472,7 +472,7 @@ public class CustomAgent : Agent {
 		// 	AddReward(reward);
 		// 	// Debug.Log("Reward: " + reward);
 		// }
-		AddReward(-0.00005f);
+		AddReward(-0.005f);
 		// stepCounter += 1;
 		// distance_prev_A = distance_now_A;
 	}
@@ -502,6 +502,8 @@ public class CustomAgent : Agent {
 	// 	or with a wall, the end of the episode is now menaged by the wrapper.
 	// 	Set the reward base value for a crash
 
+		
+
 		if (collision.collider.CompareTag("Obstacle")){ 
 			SetReward(-1f);	
 			EndEpisode();
@@ -523,5 +525,23 @@ public class CustomAgent : Agent {
 
 	}
 
+	// void OnTriggerEnter(Collider collision)
+    // {
+    //     // Debug.Log("detect collision");
+    //     Debug.Log(collision.gameObject);
+    //     Debug.Log(collision.gameObject.tag);
+
+    //     if(collision.gameObject.tag == "Lidar_C"){
+	// 		Debug.Log(" [C] Lider detects obstacle");
+	// 	}
+
+	// 	if(collision.gameObject.tag == "Lidar_L"){
+	// 		Debug.Log(" [L] Lider detects obstacle");
+	// 	}
+
+	// 	if(collision.gameObject.tag == "Lidar_R"){
+	// 		Debug.Log(" [R] Lider detects obstacle");
+	// 	}
+    // }
 
 }
