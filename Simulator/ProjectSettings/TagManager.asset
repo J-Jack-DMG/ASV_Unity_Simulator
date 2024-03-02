@@ -9,6 +9,9 @@ TagManager:
   - Target
   - Minimap
   - Water
+  - Lidar_C
+  - Lidar_R
+  - Lidar_L
   layers:
   - Default
   - TransparentFX
