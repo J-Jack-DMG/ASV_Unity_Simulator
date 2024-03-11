@@ -5,9 +5,29 @@ This project is intended to provide a unified framework to easily train an ASV a
 
 ## Features
 
-The environemnt present 
+![image](./Images/Env_presentation.png)
 
+This is what the environment looks like.
+In the hierarchy on the left, the principal components are:
+- The world 
+- The target
+- The water manager
+- The boat
 
+The first two contain the structure of the environment.
+Instead, the water manager and the boat are the objects that contain the C# script that defines the wave configuration and the interaction between the vessel and the water, respectively.
+
+### Water manager scripts
+
+![image1](./Images/water_manager_settings_presentation.png)
+
+The water manager contains two scripts.
+The first one includes the variables that define the water plane's size and resolution.
+Instead, the second script manages the parameters that modify the wave form.
+
+### Boat scripts
+![image2](./Images/boat_script_presentation.png)
+![image3](./Images/boat_manager_settings_presentation.png)
 
 ## Contributions
 
