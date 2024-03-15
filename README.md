@@ -70,32 +70,34 @@ Then, make sure the package "ML Agents" is installed and its version is 2.0.1
 
 
 
+<!-- comment
+## Features
 
-[comment]: <> ## Features
+![image](./Images/Env_presentation.png)
 
-[comment]: <> ![image](./Images/Env_presentation.png)
+This is what the environment looks like.
+In the hierarchy on the left, the principal components are:
+- The world 
+- The target
+- The water manager
+- The boat
 
-[comment]: <> This is what the environment looks like.
-[comment]: <> In the hierarchy on the left, the principal components are:
-[comment]: <> - The world 
-[comment]: <> - The target
-[comment]: <> - The water manager
-[comment]: <> - The boat
+The first two contain the structure of the environment.
+Instead, the water manager and the boat are the objects that contain the C# script that defines the wave configuration and the interaction between the vessel and the water, respectively.
 
-[comment]: <> The first two contain the structure of the environment.
-[comment]: <> Instead, the water manager and the boat are the objects that contain the C# script that defines [comment]: <> the wave configuration and the interaction between the vessel and the water, respectively.
+### Water manager scripts
 
-[comment]: <> ### Water manager scripts
+![image1](./Images/water_manager_settings_presentation.png)
 
-[comment]: <> ![image1](./Images/water_manager_settings_presentation.png)
+The water manager contains two scripts.
+The first one includes the variables that define the water plane's size and resolution.
+Instead, the second script manages the parameters that modify the wave form.
 
-[comment]: <> The water manager contains two scripts.
-[comment]: <> The first one includes the variables that define the water plane's size and resolution.
-[comment]: <> Instead, the second script manages the parameters that modify the wave form.
+### Boat scripts
+![image2](./Images/boat_script_presentation.png)
+![image3](./Images/boat_manager_settings_presentation.png)
 
-[comment]: <> ### Boat scripts
-[comment]: <> ![image2](./Images/boat_script_presentation.png)
-[comment]: <> ![image3](./Images/boat_manager_settings_presentation.png)
+-->
 
 ## Contributions
 
