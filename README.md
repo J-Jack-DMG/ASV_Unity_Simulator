@@ -3,6 +3,63 @@
 The content of this repository is the product of my thesis's work.
 This project is intended to provide a unified framework to easily train an ASV agent in a simulated environment.
 
+## Prerequisite
+
+The operating system used is Ubuntu 18.04 LTS (It is highly suggested to upgrade to a later version). 
+The use of GPU is highly suggested but optional.
+
+It is assumed that Unity and Unity Hub are installed otherwise, follow the instructions on the [unity_page](https://unity.com/download).
+Versions used:
+- Unity: 2022.3.1f1
+- Unity Hub: 3.7.0 
+
+Anaconda is highly suggested to install all components.
+
+## Installation of ML-Agents Release 20
+
+### Install the mlagents Python package 
+
+You can use the following steps to install the Python package of ML-Agents from the terminal.
+For more information, see the documentation [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Installation.md#install-the-mlagents-python-package)
+
+
+1. Create a conda environment
+```
+  conda create -n unity_env python=3.8
+```
+2. Activate the environment
+```
+  conda activate unity_env
+```
+
+> Note: for the next steps, you can refer to the ML-Agents documentation [doc_20]()
+
+3. Install the pytorch version you required from [Pytorch](https://pytorch.org/get-started/locally/)
+> Note: I used the CPU, make sure to select the conda installation.
+```
+  conda install pytorch torchvision torchaudio cpuonly -c pytorch
+```
+4. Install the **ML-Agents** toolkit, I used the **Release 20**
+```
+  pip install mlagents-envs==0.30.0
+  pip install mlagents==0.30.0
+```
+> Note: test the installation by running the command ```mlagents-learn```
+> If everything works correctly, you will see the following prompt.
+
+![image](images/)
+
+> In my case, I needed to install the following packages
+
+```
+  pip install protobuf==3.20.1
+  pip install six
+```
+### Install the com.unity.ml-agents Unity package
+You can follow these steps to install the ml-agents Unity package for the Unity editor.
+
+
+
 ## Features
 
 ![image](./Images/Env_presentation.png)
