@@ -47,7 +47,7 @@ For more information, see the documentation [here](https://github.com/Unity-Tech
 > Note: test the installation by running the command ```mlagents-learn```
 > If everything works correctly, you will see the following prompt.
 
-![image](images/)
+![image](Images/Unity_test_installation.png)
 
 > In my case, I needed to install the following packages
 
