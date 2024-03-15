@@ -1,7 +1,7 @@
 # AVS_Unity_Simulator
 
 The content of this repository is the product of my thesis's work.
-This project is intended to provide a unified framework to easily train an ASV agent in a simulated environment.
+This project is intended to provide a unified framework to train an ASV agent in a simulated environment easily.
 
 ## Prerequisite
 
@@ -56,7 +56,18 @@ For more information, see the documentation [here](https://github.com/Unity-Tech
   pip install six
 ```
 ### Install the com.unity.ml-agents Unity package
-You can follow these steps to install the ml-agents Unity package for the Unity editor.
+You need to make sure that the ml-agents Unity package for the Unity editor is installed in your project. For more details, see the documentation [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Installation.md#install-the-comunityml-agents-unity-package)
+
+In the Unity editor on the menu bar, select:
+
+1. Window -> Package Manager
+
+In the menu bar of the Package Manager, select:
+
+2. Packages: Unity Registry
+ 
+Then, make sure the package "ML Agents" is installed and its version is 2.0.1 
+
 
 
 
