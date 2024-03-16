@@ -99,6 +99,42 @@ Instead, the second script manages the parameters that modify the wave form.
 
 -->
 
+## Create your training setup
+Soon available ...
+
+<!--
+### Create the Environment Executable
+
+To create your own training setup with this project you need to first clone this repository
+``` 
+git clone https://github.com/J-Jack-DMG/ASV_Unity_Simulator.git
+```
+
+The open the project the Unity project, for Ubuntu run the UnityHub executable
+```
+./<UNITY_DIR>/UnityHub.AppImage
+```
+
+[image_unity_hub](./Images/Unity_Hub.png)
+
+Select the project "Simulator".
+> Note: for the first time, you should add the project.
+
+**Make your changes, to the environment or the code according to your task**
+
+Then, build the environment using the following steps
+
+- File -> Build Settings -> Build
+
+> Note: make sure there is no scene in the "Scene In Build" windows
+
+### Start the training
+
+By default, ML-Agents create in the project directory a "results" directory
+
+
+-->
+
 ## Contributions
 
 Before any push check the dimension of each file using the bash command explaind [here](https://netshopisp.medium.com/how-to-find-large-files-and-directories-in-linux-server-b176698d276f#:~:text=The%20%2Dtype%20f%20option%20specifies,details%20for%20each%20file%20found.)
