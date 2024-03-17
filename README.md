@@ -110,7 +110,7 @@ To create your own training setup with this project you need to first clone this
 git clone https://github.com/J-Jack-DMG/ASV_Unity_Simulator.git
 ```
 
-The open the project the Unity project, for Ubuntu run the UnityHub executable
+Then, run the UnityHub executable to open the project.
 ```
 ./<UNITY_DIR>/UnityHub.AppImage
 ```
@@ -120,9 +120,9 @@ The open the project the Unity project, for Ubuntu run the UnityHub executable
 Select the project "Simulator".
 > Note: for the first time, you should add the project.
 
-**Make your changes, to the environment or the code according to your task**
+**Make your changes to the environment and the code according to your task**
 
-Then, build the environment using the following steps
+Then, build the environment using the following steps.
 
 - File -> Build Settings -> Build
 
@@ -130,8 +130,39 @@ Then, build the environment using the following steps
 
 ### Start the training
 
-By default, ML-Agents create in the project directory a "results" directory
+By default, ML-Agents create in the project directory a "results" directory.
+To start a simple test for the training (without the executable) to ensure everything works okay, follow the next steps:
 
+1. Activate your environment
+```
+  conda activate unity_env
+```
+
+2. move to the Simulator directory and see the content of the results directory
+```
+  cd Simulator
+  ls results
+```
+You should see that there is only the "test_training" directory
+
+3. start a simple training
+```
+  mlagents-learn
+```
+> Note: this command will request you to press the button "Play" to start the training inside the unity editor.
+> At this point you can also stop the training, the aim of this section is to setup the training using the executable.
+
+4. Inside the "results" directory, you will notice a new directory called "ppo", which is the name of the default algorithm used to train an agent with the ML-Agents toolkit.
+```
+  ls results
+  ls results/ppo
+```
+
+**... TREE-LIKE STRUCTURE OF THE PPO DIRECTORY ...**
+
+
+Training ML-Agents with configuration [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Training-ML-Agents.md#training-configurations)
+Configuration file for ML-Agents description [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Training-Configuration-File.md)
 
 -->
 
