@@ -100,12 +100,12 @@ Instead, the second script manages the parameters that modify the wave form.
 -->
 
 ## Create your training setup
-Soon available ...
+<!-- Soon available ... -->
+This section is based on the instructions that can be found on the ML-Agents page [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Learning-Environment-Executable.md)
 
-<!--
 ### Create the Environment Executable
 
-To create your own training setup with this project you need to first clone this repository
+To create your training setup with this project, you need first to clone this repository.
 ``` 
 git clone https://github.com/J-Jack-DMG/ASV_Unity_Simulator.git
 ```
@@ -122,7 +122,7 @@ Select the project "Simulator".
 
 **Make your changes to the environment and the code according to your task**
 
-Then, build the environment using the following steps.
+Then, build the environment using and save it inside the _Simulator/Build_ directory.
 
 - File -> Build Settings -> Build
 
@@ -131,36 +131,30 @@ Then, build the environment using the following steps.
 ### Start the training
 
 By default, ML-Agents create in the project directory a "results" directory.
-To start a simple test for the training (without the executable) to ensure everything works okay, follow the next steps:
 
-1. Activate your environment
-```
-  conda activate unity_env
-```
+1. Relocated inside the _Simulator_ directory.
 
-2. move to the Simulator directory and see the content of the results directory
 ```
   cd Simulator
-  ls results
 ```
-You should see that there is only the "test_training" directory
-
-3. start a simple training
+2. Create a directory to store the training results
 ```
-  mlagents-learn
+  cd results
+  mkdir test_training
+  cd ..
 ```
-> Note: this command will request you to press the button "Play" to start the training inside the unity editor.
-> At this point you can also stop the training, the aim of this section is to setup the training using the executable.
+> Note: you can also add your configuration file. For more details, see [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Training-Configuration-File.md)
 
-4. Inside the "results" directory, you will notice a new directory called "ppo", which is the name of the default algorithm used to train an agent with the ML-Agents toolkit.
+3. Start the training using the environment executable.
+
 ```
-  ls results
-  ls results/ppo
+  mlagents-learn ./test_training/<config_file> --env=Build/<your_build_dir>/Boat-Simulator --run-id=test_training --no-graphics
 ```
+> Note: the run-id must be the same as the one specified inside the configuration file. 
 
-**... TREE-LIKE STRUCTURE OF THE PPO DIRECTORY ...**
+The last command will start the training process without showing the graphics to save time.
 
-
+<!--
 Training ML-Agents with configuration [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Training-ML-Agents.md#training-configurations)
 Configuration file for ML-Agents description [here](https://github.com/Unity-Technologies/ml-agents/blob/release_20/docs/Training-Configuration-File.md)
 
