@@ -115,7 +115,7 @@ Then, run the UnityHub executable to open the project.
 ./<UNITY_DIR>/UnityHub.AppImage
 ```
 
-[image_unity_hub](./Images/Unity_Hub.png)
+![image_unity_hub](./Images/Unity_Hub.png)
 
 Select the project "Simulator".
 > Note: for the first time, you should add the project.
